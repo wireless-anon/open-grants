@@ -1,7 +1,7 @@
 use anchor_lang::prelude::*;
 
 #[error_code]
-pub enum GrantsError {
+pub enum OpenGrantsError {
   #[msg("Unknown")]
   Unknown,
 }

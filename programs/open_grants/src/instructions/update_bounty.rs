@@ -12,7 +12,7 @@ pub struct UpdateBounty<'info> {
   #[account(address = bounty.config.user)]
   pub user: Account<'info, User>,
 
-  #[account(address = user.authority)]
+  #[account(address = user.authority.key())]
   pub signer: Signer<'info>,
 }
 

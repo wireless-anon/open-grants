@@ -22,7 +22,7 @@ pub struct InitProject<'info> {
   // to prevent malicious actors from spoofing projects
   #[account(
     mut,
-    address = user.authority,
+    address = user.authority.key(),
   )]
   pub signer: Signer<'info>,
 

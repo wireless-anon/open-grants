@@ -20,7 +20,7 @@ pub struct InitBounty<'info> {
   // You may not init a bounty on behalf of others
   #[account(
     mut,
-    address = user.authority,
+    address = user.authority.key(),
   )]
   pub signer: Signer<'info>,
 

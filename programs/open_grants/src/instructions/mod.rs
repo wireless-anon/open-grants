@@ -1,18 +1,24 @@
+pub mod execute_action;
+pub mod init_action;
 pub mod init_bounty;
 pub mod init_project;
 pub mod init_user;
 pub mod init_vault;
 pub mod make_grant;
+pub mod update_approval;
 pub mod update_bounty;
 pub mod update_project;
 pub mod withdraw_award;
 pub mod withdraw_grant;
 
+pub use execute_action::*;
+pub use init_action::*;
 pub use init_bounty::*;
 pub use init_project::*;
 pub use init_user::*;
 pub use init_vault::*;
 pub use make_grant::*;
+pub use update_approval::*;
 pub use update_bounty::*;
 pub use update_project::*;
 pub use withdraw_award::*;

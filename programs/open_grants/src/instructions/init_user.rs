@@ -3,13 +3,9 @@ use anchor_lang::prelude::*;
 use crate::state::*;
 
 #[derive(Accounts)]
+#[instruction(authority: UserAuthority)]
 pub struct InitUser<'info> {
   // You may init a user account on behalf of others
-  // Included here rather than ix params to take
-  // advantage of deduplication with other ixs
-  #[doc = "CHECK: Any account"]
-  pub authority: UncheckedAccount<'info>,
-
   #[account(mut)]
   pub signer: Signer<'info>,
 
@@ -21,7 +17,7 @@ pub struct InitUser<'info> {
     space = User::LEN,
     seeds = [
       b"user",
-      authority.key().as_ref()
+      authority.key().as_ref(),
     ],
     bump,
   )]
@@ -30,13 +26,10 @@ pub struct InitUser<'info> {
   pub system_program: Program<'info, System>,
 }
 
-pub fn init_user_handler(ctx: Context<InitUser>) -> Result<()> {
+pub fn init_user_handler(ctx: Context<InitUser>, authority: UserAuthority) -> Result<()> {
   let user = &mut ctx.accounts.user;
-  let authority = &ctx.accounts.authority;
 
-  **user = User {
-    authority: authority.key(),
-  };
+  **user = User { authority };
 
   Ok(())
 }

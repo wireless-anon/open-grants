@@ -46,7 +46,7 @@ pub struct MakeGrant<'info> {
     // Could theoretically be any account, but might as well
     // restrict to user since the whole point of the user account
     // is for on-chain record keeping
-    address = user.authority,
+    address = user.authority.key(),
   )]
   pub signer: Signer<'info>,
 

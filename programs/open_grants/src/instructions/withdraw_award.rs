@@ -37,7 +37,7 @@ pub struct WithdrawAward<'info> {
   #[account(address = destination.mint)]
   pub mint: Account<'info, Mint>,
 
-  #[account(address = user.authority)]
+  #[account(address = user.authority.key())]
   pub signer: Signer<'info>,
 
   pub token_program: Program<'info, Token>,

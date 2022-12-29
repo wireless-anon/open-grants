@@ -1,3 +1,5 @@
+#![feature(let_else)]
+
 use anchor_lang::prelude::*;
 
 declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS");
@@ -16,8 +18,8 @@ pub use state::*;
 pub mod open_grants {
   use super::*;
 
-  pub fn init_user(ctx: Context<InitUser>) -> Result<()> {
-    init_user_handler(ctx)
+  pub fn init_user(ctx: Context<InitUser>, authority: UserAuthority) -> Result<()> {
+    init_user_handler(ctx, authority)
   }
 
   pub fn init_project(ctx: Context<InitProject>, config: ProjectConfig) -> Result<()> {
@@ -50,5 +52,17 @@ pub mod open_grants {
 
   pub fn withdraw_award(ctx: Context<WithdrawAward>, amount: u64) -> Result<()> {
     withdraw_award_handler(ctx, amount)
+  }
+
+  pub fn init_action(ctx: Context<InitAction>, instruction: ActionInstruction) -> Result<()> {
+    init_action_handler(ctx, instruction)
+  }
+
+  pub fn update_approval(ctx: Context<UpdateApproval>, approval: bool) -> Result<()> {
+    update_approval_handler(ctx, approval)
+  }
+
+  pub fn execute_action(ctx: Context<ExecuteAction>) -> Result<()> {
+    execute_action_handler(ctx)
   }
 }

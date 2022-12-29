@@ -31,7 +31,7 @@ pub struct WithdrawGrant<'info> {
   #[account(address = project.config.user)]
   pub user: Account<'info, User>,
 
-  #[account(address = user.authority)]
+  #[account(address = user.authority.key())]
   pub signer: Signer<'info>,
 
   pub token_program: Program<'info, Token>,
