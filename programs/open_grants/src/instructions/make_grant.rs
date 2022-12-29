@@ -28,7 +28,7 @@ pub struct MakeGrant<'info> {
   #[account(
     mut,
     seeds = [
-      b"vault".as_ref(),
+      b"vault",
       project.key().as_ref(),
       mint.key().as_ref()
     ],

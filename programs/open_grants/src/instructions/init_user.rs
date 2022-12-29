@@ -20,7 +20,7 @@ pub struct InitUser<'info> {
     payer = signer,
     space = User::LEN,
     seeds = [
-      b"user".as_ref(),
+      b"user",
       authority.key().as_ref()
     ],
     bump,

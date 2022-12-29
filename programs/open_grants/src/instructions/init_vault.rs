@@ -1,13 +1,16 @@
 use anchor_lang::prelude::*;
 use anchor_spl::token::{Mint, Token, TokenAccount};
 
-use crate::state::*;
+use crate::ID;
 
+// Maybe should have a specific instruction to init a vault for each type of account?
 #[derive(Accounts)]
 pub struct InitVault<'info> {
   pub mint: Account<'info, Mint>,
 
-  pub project: Account<'info, Project>,
+  #[account(owner = ID)]
+  #[doc = "CHECK: Any account owned by the program (e.g. project, bounty, etc.)"]
+  pub owner: UncheckedAccount<'info>,
 
   #[account(mut)]
   pub signer: Signer<'info>,
@@ -18,13 +21,13 @@ pub struct InitVault<'info> {
     init,
     payer = signer,
     seeds = [
-      b"vault".as_ref(),
-      project.key().as_ref(),
+      b"vault",
+      owner.key().as_ref(),
       mint.key().as_ref()
     ],
     bump,
     token::mint = mint,
-    token::authority = project,
+    token::authority = owner,
   )]
   pub vault: Account<'info, TokenAccount>,
 

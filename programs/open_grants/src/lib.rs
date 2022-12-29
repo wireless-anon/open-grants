@@ -36,7 +36,19 @@ pub mod open_grants {
     make_grant_handler(ctx, amount, metadata_uri)
   }
 
-  pub fn withdraw_funds(ctx: Context<WithdrawFunds>, amount: u64) -> Result<()> {
-    withdraw_funds_handler(ctx, amount)
+  pub fn withdraw_grant(ctx: Context<WithdrawGrant>, amount: u64) -> Result<()> {
+    withdraw_grant_handler(ctx, amount)
+  }
+
+  pub fn init_bounty(ctx: Context<InitBounty>, config: BountyConfig) -> Result<()> {
+    init_bounty_handler(ctx, config)
+  }
+
+  pub fn update_bounty(ctx: Context<UpdateBounty>, config: BountyConfig) -> Result<()> {
+    update_bounty_handler(ctx, config)
+  }
+
+  pub fn withdraw_award(ctx: Context<WithdrawAward>, amount: u64) -> Result<()> {
+    withdraw_award_handler(ctx, amount)
   }
 }

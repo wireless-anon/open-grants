@@ -6,6 +6,7 @@ use anchor_lang::prelude::*;
 #[account]
 pub struct User {
   pub authority: Pubkey,
+  // TODO: add other stuff like reputation, total bounty amount received, etc.
 }
 
 impl User {

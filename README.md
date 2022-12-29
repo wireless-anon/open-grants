@@ -38,6 +38,15 @@ It will be a public good with zero fees and it will be governed by a multisig of
     - Telegram
     - TikTok
   - Tags
+- **Bounty**: Bounties are created by users for other users to complete in order to receive some reward. Bounties may optionally be associated with a project. Like projects, a filtering system may be used by frontends to ensure that only high-quality bounties are shown. Bounty metadata can include:
+  - Name (e.g. "Anchor IDL Realloc Support")
+  - Description (e.g. "Looking for somebody to implement `realloc` for @anchorlang idl accounts.")
+  - Image
+  - Website (e.g. "https://twitter.com/crispheaney/status/1606027358955130880")
+  - Category (e.g. "Dev Tools")
+  - Tags
+- **Metadata**: Metadata objects for grants, projects, bounties, etc. can be uploaded to Arweave using Bundlr Network. The storage payment can be made in SOL.
+  - Example: https://github.com/jacobcreech/Token-Creator/blob/master/src/components/UploadMetadata.tsx#L124
 
 #### Ideas
 
@@ -50,6 +59,9 @@ It will be a public good with zero fees and it will be governed by a multisig of
 - **Milestone grants**: Make a grant that can only be withdrawn after a milestone is reached (e.g. successful completion of a dev tool or game).
   - Need to figure out how to verify milestones.
   - Could assign a 'milestone oracle' to each milestone, and the milestone oracle can release the funds.
+
+#### Post-MVP / Non-goals
+
 - **Streaming grants**: Make a grant that is released over time (e.g. 1% per day).
   - In my opinion, not necessary for v0.
   - Most of these cases are covered by milestone grants or are more appropriate for a normal payment system (e.g. Streamflow). I think that grant systems should be based around payments for concrete deliverables.
